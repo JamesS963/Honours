@@ -1,0 +1,12 @@
+<form (submit)="register($event, name.value, email.value, password.value)"class="form-signin">
+  <label for="name" class="sr-only" >Name</label>
+  <input  #name type="text" id="name" placeholder="Name" >
+
+  <label for="email"  class="sr-only" >email </label>
+  <input #email type="email" id="email" placeholder="Email address" >
+
+  <label for="inputPassword" class="sr-only">password</label>
+  <input #password type="password" id="inputPassword" placeholder="Password" >
+
+  <button type="submit" class="btn btn-md btn-primary btn-block">Register</button>
+</form>
