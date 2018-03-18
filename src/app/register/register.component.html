@@ -1,12 +1,13 @@
-<form (submit)="register($event, name.value, email.value, password.value)"class="form-signin">
-  <label for="name" class="sr-only" >Name</label>
-  <input  #name type="text" id="name" placeholder="Name" >
+<form (submit)="createAccount(email.value, password.value)">
+<div>
+  <label for ="email">Email</label>
+  <input required ngModel name="email" #email="ngModel" id ="email" type ="text">
+  <div *ngIf="email.touched && !email.valid">Email is invalid</div>
 
-  <label for="email"  class="sr-only" >email </label>
-  <input #email type="email" id="email" placeholder="Email address" >
+  <label for ="password">Password</label>
+  <input ngModel name="password" #password = "ngModel" id ="password" type ="password">
 
-  <label for="inputPassword" class="sr-only">password</label>
-  <input #password type="password" id="inputPassword" placeholder="Password" >
 
-  <button type="submit" class="btn btn-md btn-primary btn-block">Register</button>
+  <button (click)="createAccount(email.value, password.value)">Register</button>
+</div>
 </form>
