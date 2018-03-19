@@ -7,18 +7,25 @@ import {AccountAuthService} from './account-auth.service';
 export class SongService {
 
   song: Observable<any>;
+  playlist: Observable<any>;
   constructor(private db: AngularFireDatabase, private accountAuthService: AccountAuthService ) {
     this.song = db.list('songs/').valueChanges();
   }
 
+  getPlaylist(id) {
+    this.playlist = this.db.list('users/' + id + '/playlist').valueChanges();
+    return this.playlist;
+  }
   getSong(id) {
-    return this.db.object('songs/' + id).valueChanges();
+     this.song = this.db.object('songs/' + id).valueChanges();
+     return this.song;
   }
   getSongs() {
+    this.song = this.db.list('songs/').valueChanges();
     return this.song;
   }
   addToPlaylist(songID) {
-    this.db.object('users/' + this.accountAuthService.getUserID() + '/playlist/' +songID).update({
+    this.db.object('users/' + this.accountAuthService.getUserID() + '/playlist/' + songID).update({
       id: songID
     });
     this.db.object('songs/' + songID + '/subscribers/' + this.accountAuthService.getUserID() ).update({
@@ -33,7 +40,8 @@ export class SongService {
     return this.db.list('songs/').push({
       title: title,
       artist: artist,
-      genre: genre
+      genre: genre,
+      owner: this.accountAuthService.getUserID(),
     }).then((s) => {
       this.db.object('songs/' + s.key).update({
         id: s.key

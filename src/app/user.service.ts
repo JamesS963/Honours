@@ -13,6 +13,7 @@ export class UserService {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
   getUser(id) { return this.db.object('users/' + id); }
+
   login(email, password) {
     return this.afAuth.auth
       .signInWithEmailAndPassword(email, password);

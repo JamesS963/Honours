@@ -8,6 +8,7 @@ import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import {CreateSongComponent} from './create-song/create-song.component';
 import {FileuploadComponent} from './file-upload/fileupload.component';
 import {SongComponent} from './song/song.component';
+import {MyPlaylistComponent} from './my-playlist/my-playlist.component';
 
 
 const appRoutes: Routes = [
@@ -42,6 +43,10 @@ const appRoutes: Routes = [
   {
     path: 'song/:id',
     component: SongComponent
+  },
+  {
+    path: 'playlist/:id',
+    component: MyPlaylistComponent
   }
 
 ];

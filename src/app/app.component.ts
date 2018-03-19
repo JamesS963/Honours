@@ -9,11 +9,13 @@ import {AngularFireAuth} from 'angularfire2/auth';
 })
 export class AppComponent {
   title = 'app';
+  id;
   public auth: boolean;
   constructor(private authService: AccountAuthService, afAuth: AngularFireAuth) {
     afAuth.authState.subscribe((auth) => {
       if (auth != null) {
         this.auth = true;
+        this.id = auth.uid
       } else {this.auth = false; }
     });
 

@@ -1,3 +1,5 @@
 <h1>{{(song |async)?.title}}</h1>
 <p>{{(song |async)?.artist}}</p>
 <p>{{(song |async)?.genre}}</p>
+<button mat-button (click)="addToPlaylist()">Add To Playlist</button>
+<button mat-button (click) ="removeFromPlaylist()">Remove From Playlist</button>

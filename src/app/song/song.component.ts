@@ -19,8 +19,10 @@ export class SongComponent implements OnInit {
   ngOnInit() {
   }
 
-  addToPlaylist(){this.songService.addToPlaylist(this.route.snapshot.params['id']);}
-  removeFromPlaylist(){
+  addToPlaylist() {
+    this.songService.addToPlaylist(this.route.snapshot.params['id']);
+  }
+  removeFromPlaylist() {
     this.songService.removeFromPlaylist(this.route.snapshot.params['id']);
   }
 }

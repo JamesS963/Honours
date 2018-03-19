@@ -26,6 +26,8 @@ import { FileSizePipe } from './file-size.pipe';
 import { SongComponent } from './song/song.component';
 import { BrowseSongsComponent } from './browse-songs/browse-songs.component';
 import {SongService} from './song.service';
+import { MyPlaylistComponent } from './my-playlist/my-playlist.component';
+import {UploadServiceService} from './upload.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCEc0gZV7cOe0Od1S9Wa7RZ2M53xrzXj6g',
@@ -56,7 +58,8 @@ export let MD_MODULES: any = [
     FileuploadComponent,
     FileSizePipe,
     SongComponent,
-    BrowseSongsComponent
+    BrowseSongsComponent,
+    MyPlaylistComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -73,7 +76,8 @@ export let MD_MODULES: any = [
   providers: [
     UserService,
     AccountAuthService,
-    SongService
+    SongService,
+    UploadServiceService
   ],
   bootstrap: [AppComponent]
 })

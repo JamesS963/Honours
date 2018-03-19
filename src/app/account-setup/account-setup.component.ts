@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
+import {UploadServiceService} from '../upload.service';
 
 @Component({
   selector: 'app-account-setup',
@@ -7,12 +8,17 @@ import {UserService} from '../user.service';
   styleUrls: ['./account-setup.component.css']
 })
 export class AccountSetupComponent implements OnInit {
-
-  constructor(private userService: UserService) { }
+  image;
+  constructor(private userService: UserService, public uploadService: UploadServiceService) { }
 
   ngOnInit() {}
 
+
+  setImage(i) {
+    this.image = i;
+  }
   createProfile(firstName, surname, nickname, age, bio) {
+    this.uploadService.startProfileUpload(this.image);
     this.userService.createProfile(firstName, surname, nickname, age, bio);
   }
 

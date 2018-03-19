@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import {Router} from '@angular/router';
+import {UploadServiceService} from '../upload.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  createAccount(email, password) {
+  createAccount(email, password, event) {
     this.userService.createAccount(email, password).
     then((e) => {this.router.navigate(['/accountSetup']); })
       .catch((error) => {
