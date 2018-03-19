@@ -1,6 +1,12 @@
-<mat-tool>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/register">Register</a>
-</mat-tool>
+
+
+<mat-toolbar>
+  <button mat-button  *ngIf="!auth" routerLink="/login">Login</button>
+  <button mat-button  *ngIf="!auth" routerLink="/register">Register</button>
+  <button mat-button *ngIf="auth" routerLink="/">Home</button>
+  <button mat-button *ngIf="auth" routerLink="/editProfile">Edit Profile</button>
+  <button mat-button *ngIf="auth" routerLink="/createSong">Create Song</button>
+  <button mat-button  *ngIf="auth" (click)="logout()" >logout</button>
+</mat-toolbar>
 
 <router-outlet></router-outlet>

@@ -3,16 +3,36 @@ import {ModuleWithProviders} from '@angular/compiler/src/core';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {AccountSetupComponent} from './account-setup/account-setup.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {EditProfileComponent} from './edit-profile/edit-profile.component';
+import {CreateSongComponent} from './create-song/create-song.component';
+import {FileuploadComponent} from './file-upload/fileupload.component';
 
 
 const appRoutes: Routes = [
+  {
+    path: '',
+    component: DashboardComponent
+  },
   {
     path: 'accountSetup',
     component: AccountSetupComponent
   },
   {
-    path: '',
+    path: 'createSong',
+    component: CreateSongComponent
+  },
+  {
+    path: 'editProfile',
+    component: EditProfileComponent
+  },
+  {
+    path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'upload',
+    component: FileuploadComponent
   },
   {
     path: 'register',

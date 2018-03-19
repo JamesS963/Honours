@@ -1,3 +1,18 @@
-<p>
-  account-setup works!
-</p>
+<form (submit)="createProfile(firstName.value, surname.value, nickname.value, age.value, bio.value)">
+  <label for ="firstName">First Name</label>
+  <input required ngModel name="firstName" #firstName="ngModel" id ="firstName" type ="text">
+
+  <label for ="surname">Surname</label>
+  <input required ngModel name="surnamel" #surname="ngModel" id ="surname" type ="text">
+
+  <label for ="nickname">nickname</label>
+  <input required ngModel name="nickname" #nickname="ngModel" id ="nickname" type ="text">
+
+  <label for ="age">Age</label>
+  <input required ngModel name="age" #age="ngModel" id ="age" type ="text">
+
+  <label for ="bio">Age</label>
+  <input required ngModel name="bio" #bio="ngModel" id ="bio" type ="text">
+
+  <button type="submit">Create Account</button>
+</form>
