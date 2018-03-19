@@ -11,7 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import {FormsModule} from '@angular/forms';
 import { AccountSetupComponent } from './account-setup/account-setup.component';
 import {UserService} from './user.service';
-import {MatButtonModule, MatButtonToggle, MatButtonToggleModule, MatToolbar, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatButtonToggle, MatButtonToggleModule, MatMenuModule, MatToolbar, MatToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {AccountAuthService} from './account-auth.service';
@@ -23,6 +23,9 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
 import { DropZoneDirective } from './drop-zone.directive';
 import { FileuploadComponent } from './file-upload/fileupload.component';
 import { FileSizePipe } from './file-size.pipe';
+import { SongComponent } from './song/song.component';
+import { BrowseSongsComponent } from './browse-songs/browse-songs.component';
+import {SongService} from './song.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCEc0gZV7cOe0Od1S9Wa7RZ2M53xrzXj6g',
@@ -36,6 +39,7 @@ export const firebaseConfig = {
 export let MD_MODULES: any = [
   MatButtonModule,
   MatButtonToggleModule,
+  MatMenuModule,
   MatToolbarModule
 ];
 
@@ -50,7 +54,9 @@ export let MD_MODULES: any = [
     CreateSongComponent,
     DropZoneDirective,
     FileuploadComponent,
-    FileSizePipe
+    FileSizePipe,
+    SongComponent,
+    BrowseSongsComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -67,6 +73,7 @@ export let MD_MODULES: any = [
   providers: [
     UserService,
     AccountAuthService,
+    SongService
   ],
   bootstrap: [AppComponent]
 })

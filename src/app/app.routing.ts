@@ -7,6 +7,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import {CreateSongComponent} from './create-song/create-song.component';
 import {FileuploadComponent} from './file-upload/fileupload.component';
+import {SongComponent} from './song/song.component';
 
 
 const appRoutes: Routes = [
@@ -37,6 +38,10 @@ const appRoutes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'song/:id',
+    component: SongComponent
   }
 
 ];

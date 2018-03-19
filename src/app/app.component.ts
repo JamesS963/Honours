@@ -13,8 +13,8 @@ export class AppComponent {
   constructor(private authService: AccountAuthService, afAuth: AngularFireAuth) {
     afAuth.authState.subscribe((auth) => {
       if (auth != null) {
-        this.auth = true; alert('logged In');
-      } else { this.auth = false; alert('logged out'); }
+        this.auth = true;
+      } else {this.auth = false; }
     });
 
   }

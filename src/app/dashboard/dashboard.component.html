@@ -1,1 +1,5 @@
 <h1>welcome {{(me | async)?.firstName}}</h1>
+
+<div *ngFor="let s of (songs | async)">
+  <h2><a routerLink="song/{{s.id}}">{{s.title}}</a></h2>
+</div>

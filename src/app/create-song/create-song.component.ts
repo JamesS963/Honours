@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SongService} from '../song.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-song',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateSongComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(public songService: SongService, public router: Router) { }
 
   ngOnInit() {
+  }
+
+  createSong(title, artist, genre) {
+    this.songService.createSong(title, artist, genre).then((success) =>{
+      this.router.navigate(['/']);
+    });
   }
 
 }

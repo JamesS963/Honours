@@ -4,11 +4,11 @@
     <input required ngModel name="title" #title="ngModel" id ="title" type ="text">
 
     <label for ="artist">Artist</label>
-    <input ngModel name="password" #artist = "ngModel" id ="artist" type ="text">
+    <input ngModel name="artist" #artist = "ngModel" id ="artist" type ="text">
 
-    <label for ="artist">genre</label>
-    <input ngModel name="password" #artist = "ngModel" id ="genre" type ="text">
+    <label for ="genre">genre</label>
+    <input ngModel name="genre" #genre = "ngModel" id ="genre" type ="text">
 
-    <button mat-button>Create</button>
+    <button mat-button (click)="createSong(title.value, artist.value, genre.value)">Create</button>
   </div>
 </form>

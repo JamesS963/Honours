@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AccountAuthService} from '../account-auth.service';
 import {Observable} from 'rxjs/Observable';
-import {AngularFireDatabase} from 'angularfire2/database';
+import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import {SongService} from '../song.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,12 +12,15 @@ import {AngularFireDatabase} from 'angularfire2/database';
 export class DashboardComponent implements OnInit {
 
   me: Observable<any>;
-  constructor(public accountAuthService: AccountAuthService, public db: AngularFireDatabase) {
+  songs: Observable<any>;
+  constructor(public accountAuthService: AccountAuthService, public db: AngularFireDatabase, public songService: SongService) {
     this.me = this.accountAuthService.me;
+    this.songs = songService.getSongs();
   }
 
   ngOnInit() {
     this.me = this.accountAuthService.me;
+
   }
 
 }
