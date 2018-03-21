@@ -64,19 +64,14 @@ export class UploadServiceService {
 
     // Progress monitoring
     this.profilePercentage = this.profileTask.percentageChanges();
-    this.profileSnapshot   = this.profileTask.snapshotChanges().pipe(
-      tap((snapshot) => {
-        if (snapshot.bytesTransferred === snapshot.totalBytes) {
-          this.db.object('users/' + this.authService.getUserID()).update({
-              profilePic: path
-            });
-        }
-      })
-    );
 
     // The file's download URL
     this.profileDownloadURL = this.profileTask.downloadURL();
-    return this.profileDownloadURL;
+    return this.profileDownloadURL.subscribe((s) => {
+      this.db.object('users/' + this.authService.getUserID()).update({
+        profilePic: s
+      });
+    });
   }
 
   startAlbumUpload(event: FileList) {
@@ -103,17 +98,15 @@ export class UploadServiceService {
     this.albumSnapshot   = this.albumTask.snapshotChanges();
 
     // The file's download URL
-    this.albumDownloadURL = this.albumTask.downloadURL();
+   return this.albumDownloadURL = this.albumTask.downloadURL();
   }
-
-
   startSongUpload(event: FileList) {
     // The File object
     const file = event.item(0);
 
     // Client-side validation example
-    if (file.type.split('/')[0] !== 'image') {
-      console.error('unsupported file type :( ');
+    if (file.type.split('/')[0] !== 'audio') {
+      console.error('unsupported file type audio ');
       return;
     }
 
@@ -131,7 +124,7 @@ export class UploadServiceService {
     this.songSnapshot   = this.songTask.snapshotChanges();
 
     // The file's download URL
-    this.songDownloadURL = this.songTask.downloadURL();
+   return this.songDownloadURL = this.songTask.downloadURL();
   }
 
   isActive(snapshot) {

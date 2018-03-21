@@ -11,22 +11,26 @@ import {UploadServiceService} from '../upload.service';
 export class CreateSongComponent implements OnInit {
 
   album;
-  image;
-
+  song;
+  albumSub;
   constructor(public songService: SongService, public uploadService: UploadServiceService, public router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   setAlbum(event) {
     this.album = event;
   }
   setSong(event) {
-    this.image = event;
+    this.song = event;
   }
   createSong(title, artist, genre) {
-    this.songService.createSong(title, artist, genre).then((success) => {
-      this.router.navigate(['/']);
+    this.uploadService.startAlbumUpload(this.album).subscribe((a) => {
+      this.albumSub = a;
+      this.uploadService.startSongUpload(this.song).subscribe((s) => {
+        this.songService.createSong(title, artist, genre, s, this.albumSub).then((success) => {
+          //  this.router.navigate(['/']);
+        });
+      });
     });
   }
 

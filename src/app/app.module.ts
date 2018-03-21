@@ -11,7 +11,10 @@ import { RegisterComponent } from './register/register.component';
 import {FormsModule} from '@angular/forms';
 import { AccountSetupComponent } from './account-setup/account-setup.component';
 import {UserService} from './user.service';
-import {MatButtonModule, MatButtonToggle, MatButtonToggleModule, MatMenuModule, MatToolbar, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule, MatButtonToggle, MatButtonToggleModule, MatCardModule, MatGridListModule, MatMenuModule, MatToolbar,
+  MatToolbarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {AccountAuthService} from './account-auth.service';
@@ -41,6 +44,8 @@ export const firebaseConfig = {
 export let MD_MODULES: any = [
   MatButtonModule,
   MatButtonToggleModule,
+  MatCardModule,
+  MatGridListModule,
   MatMenuModule,
   MatToolbarModule
 ];

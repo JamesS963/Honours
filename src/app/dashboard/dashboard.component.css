@@ -1,0 +1,22 @@
+.cardImage{
+  height: 300px;
+  width: 100%;
+  background-size: cover;
+  margin: 5px 5px auto;
+}
+
+mat-card{
+  background-color: #f16624;
+  font-size: small;
+  padding: 2% ;
+  display: inline-block;
+  margin: 10px 5px auto;
+  height: 600px;
+  width: 250px;
+  vertical-align: top;
+}
+
+.cardList {
+  margin-top: 0;
+  display: block;
+}

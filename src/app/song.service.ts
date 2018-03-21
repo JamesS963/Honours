@@ -36,12 +36,14 @@ export class SongService {
     this.db.object('users/' + this.accountAuthService.getUserID() + '/playlist/' + songID).remove();
     this.db.object('songs/' + songID + '/subscribers/' + this.accountAuthService.getUserID() ).remove();
   }
-  createSong(title, artist, genre) {
+  createSong(title, artist, genre, song, art) {
     return this.db.list('songs/').push({
       title: title,
       artist: artist,
       genre: genre,
       owner: this.accountAuthService.getUserID(),
+      song: song,
+      art: art
     }).then((s) => {
       this.db.object('songs/' + s.key).update({
         id: s.key

@@ -21,5 +21,4 @@ export class AccountSetupComponent implements OnInit {
     this.uploadService.startProfileUpload(this.image);
     this.userService.createProfile(firstName, surname, nickname, age, bio);
   }
-
 }
