@@ -14,7 +14,7 @@ export class CreateSongComponent implements OnInit {
   song;
   albumSub;
   constructor(public songService: SongService, public uploadService: UploadServiceService, public router: Router) { }
-
+  uploading = false;
   ngOnInit() {}
 
   setAlbum(event) {
@@ -24,6 +24,10 @@ export class CreateSongComponent implements OnInit {
     this.song = event;
   }
   createSong(title, artist, genre) {
+    alert(title);
+    alert(artist);
+    alert(genre);
+    this.uploading = true;
     this.uploadService.startAlbumUpload(this.album).subscribe((a) => {
       this.albumSub = a;
       this.uploadService.startSongUpload(this.song).subscribe((s) => {

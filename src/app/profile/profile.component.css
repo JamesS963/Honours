@@ -1,14 +1,19 @@
-.songImg {
-  height: 200px;
+.profilepic{
   width: 200px;
-  background-size: cover;
-  margin: 5px 5px auto;
+  margin: 10px auto auto;
+  display: inline-block;
+  height: 100%;
 }
-
-.song{
-  margin: auto;
-
+.profileCard{
+  width: 100%;
 }
+ mat-card-title{
+   align: center;
+ }
+ mat-card-content{
+   align: center;
+ }
+
 
 .commentCard {
   max-width: 400px;
@@ -36,6 +41,3 @@
   display: inline-flex;
   cursor: pointer;
 }
-
-
-

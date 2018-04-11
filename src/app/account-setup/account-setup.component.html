@@ -54,22 +54,25 @@
 
 
 
+<mat-card align="center">
+<form >
 
-<form (submit)="createProfile(firstName.value, surname.value, nickname.value, age.value, bio.value)">
-  <label for ="firstName">First Name</label>
-  <input required ngModel name="firstName" #firstName="ngModel" id ="firstName" type ="text">
+  <mat-form-field>
+    <input matInput placeholder ="First Name" required ngModel name="firstName" #firstName="ngModel" id ="firstName" type ="text">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder ="Surname" required ngModel name="surnamel" #surname="ngModel" id ="surname" type ="text">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder ="Nickname" required ngModel name="nickname" #nickname="ngModel" id ="nickname" type ="text">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder ="Age" required ngModel name="age" #age="ngModel" id ="age" type ="text">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder ="Biography" required ngModel name="bio" #bio="ngModel" id ="bio" type ="text">
+  </mat-form-field>
 
-  <label for ="surname">Surname</label>
-  <input required ngModel name="surnamel" #surname="ngModel" id ="surname" type ="text">
-
-  <label for ="nickname">nickname</label>
-  <input required ngModel name="nickname" #nickname="ngModel" id ="nickname" type ="text">
-
-  <label for ="age">Age</label>
-  <input required ngModel name="age" #age="ngModel" id ="age" type ="text">
-
-  <label for ="bio">bio</label>
-  <input required ngModel name="bio" #bio="ngModel" id ="bio" type ="text">
-
-  <button type="submit">Create Account</button>
+  <button mat-button (click)="createProfile(firstName.value, surname.value, nickname.value, age.value, bio.value)">Create Account</button>
 </form>
+</mat-card>

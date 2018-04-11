@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {Observable} from 'rxjs/Observable';
-import {AngularFireDatabase} from 'angularfire2/database';
+import {AngularFireDatabase, AngularFireObject} from 'angularfire2/database';
+import {FirebaseObjectObservable} from 'angularfire2/database-deprecated';
 
 @Injectable()
 export class AccountAuthService {

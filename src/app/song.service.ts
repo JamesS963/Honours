@@ -53,4 +53,18 @@ export class SongService {
       });
     });
   }
+  getComments(id) {
+    return this.db.list('songs/' + id + '/comments').valueChanges();
+  }
+  postComment(id, message) {
+    this.accountAuthService.getMe().subscribe((e) => {
+      this.db.list('songs/' + id + '/comments' ).push({
+        id: this.accountAuthService.getUserID(),
+        comment: message,
+        displayName: e.nickname,
+        pic: e.profilePic,
+        timestamp: Date.now()
+      });
+    });
+  }
 }

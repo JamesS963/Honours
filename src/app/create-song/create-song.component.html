@@ -1,22 +1,44 @@
 
 
-<div class="dropzone"
-     dropZone
-     (hovered)="this.uploadService.toggleHover($event)"
->
 
 
 
-  <h3>Album Artwork</h3>
 
-  <div class="file">
-    <label class="file-label">
+<ng-container *ngIf="!uploading">
+<mat-card align="center">
+<form >
+
+  <h1>Create Song</h1>
+
+  <mat-form-field>
+    <input matInput placeholder ="Title" required ngModel name="title" #title="ngModel" id ="title" type ="text">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder ="Artist" required ngModel name="artist" #artist = "ngModel" id ="artist" type ="text">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder ="Genre" required ngModel name="genre" #genre = "ngModel" id ="genre" type ="text">
+  </mat-form-field>
+
+  <div class="dropzone"
+       dropZone
+       (hovered)="this.uploadService.toggleHover($event)"
+  >
 
 
-      <input class="file-input" type="file" (change)="setAlbum($event.target.files)">
+
+    <h3>Album Artwork</h3>
+
+    <div class="file">
+      <label class="file-label">
 
 
-      <span class="file-cta">
+        <input class="file-input" type="file" (change)="setAlbum($event.target.files)">
+
+
+        <span class="file-cta">
             <span class="file-icon">
               <i class="fa fa-upload"></i>
             </span>
@@ -24,55 +46,55 @@
               or choose a file…
             </span>
           </span>
-    </label>
-  </div>
-</div>
-
-<div *ngIf="this.uploadService.albumPercentage | async as pct">
-
-  <progress class="progress is-info"
-            [value]="pct"
-            max="100">
-  </progress>
-
-  {{ pct | number }}%
-
-</div>
-
-
-<div *ngIf="this.uploadService.albumSnapshot | async as snap">
-  {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
-
-  <div *ngIf="this.uploadService.albumDownloadURL | async as url">
-    <h3>Results!</h3>
-    <img [src]="url"><br>
-    <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+      </label>
+    </div>
   </div>
 
-</div>
+  <div *ngIf="this.uploadService.albumPercentage | async as pct">
+
+    <progress class="progress is-info"
+              [value]="pct"
+              max="100">
+    </progress>
+
+    {{ pct | number }}%
+
+  </div>
+
+
+  <div *ngIf="this.uploadService.albumSnapshot | async as snap">
+    {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
+
+    <div *ngIf="this.uploadService.albumDownloadURL | async as url">
+      <h3>Results!</h3>
+      <img [src]="url"><br>
+      <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+    </div>
+
+  </div>
 
 
 
 
 
 
-<div class="dropzone"
-     dropZone
-     (hovered)="this.uploadService.toggleHover($event)"
->
+  <div class="dropzone"
+       dropZone
+       (hovered)="this.uploadService.toggleHover($event)"
+  >
 
 
 
-  <h3>AngularFire Drop Zone</h3>
+    <h3>AngularFire Drop Zone</h3>
 
-  <div class="file">
-    <label class="file-label">
-
-
-      <input class="file-input" type="file" (change)="setSong($event.target.files)">
+    <div class="file">
+      <label class="file-label">
 
 
-      <span class="file-cta">
+        <input class="file-input" type="file" (change)="setSong($event.target.files)">
+
+
+        <span class="file-cta">
             <span class="file-icon">
               <i class="fa fa-upload"></i>
             </span>
@@ -80,10 +102,19 @@
               or choose a file…
             </span>
           </span>
-    </label>
+      </label>
+    </div>
   </div>
-</div>
 
+
+
+  <button mat-button (click)="createSong(title.value, artist.value, genre.value)">Create</button>
+
+</form>
+
+</mat-card>
+</ng-container>
+<ng-container *ngIf="uploading">
 <div *ngIf="this.uploadService.songPercentage | async as pct">
 
   <progress class="progress is-info"
@@ -100,28 +131,12 @@
   {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
 
   <div *ngIf="this.uploadService.songDownloadURL | async as url">
+    <h1>Success, Your Song has been uploaded</h1>
+    <button mat-button >click here to return to the dashboard</button>
     <h3>Results!</h3>
     <audio  [src]="url" controls></audio>
     <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
   </div>
 
 </div>
-
-
-
-
-
-<form >
-  <div>
-    <label for ="title">Title</label>
-    <input required ngModel name="title" #title="ngModel" id ="title" type ="text">
-
-    <label for ="artist">Artist</label>
-    <input ngModel name="artist" #artist = "ngModel" id ="artist" type ="text">
-
-    <label for ="genre">genre</label>
-    <input ngModel name="genre" #genre = "ngModel" id ="genre" type ="text">
-
-    <button mat-button (click)="createSong(title.value, artist.value, genre.value)">Create</button>
-  </div>
-</form>
+</ng-container>

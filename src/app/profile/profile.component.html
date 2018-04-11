@@ -1,19 +1,34 @@
 <mat-tab-group>
-  <mat-tab label="song">
-<div class = "song">
-  <img style="float: left;" class ="songImg" [src] = "(song | async)?.art">
-  <h1>{{(song |async)?.title}}</h1>
-  <p>{{(song |async)?.artist}}</p>
-  <p>{{(song |async)?.genre}}</p>
-  <p> Uploaded by <a [routerLink]="['/profile', ownerID]">{{(owner | async)?.nickname}}</a> </p>
-  <audio controls [src]="(song | async)?.song"></audio>
-  <br>
-<button mat-button (click)="addToPlaylist()">Add To Playlist</button>
-<button mat-button (click) ="removeFromPlaylist()">Remove From Playlist</button>
-</div>
+  <mat-tab label="Profile">
+    <mat-grid-list [cols]="12" rowHeight = "200px">
+
+      <mat-grid-tile [colspan] = "4" >
+        <img class = "profilepic" [src] = "(profile | async)?.profilePic">
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan] = "8"  >
+    <mat-card class = "profileCard">
+      <mat-card-title>{{(profile| async)?.nickname}}'s Profile</mat-card-title>
+      <mat-card-content>name: {{(profile| async)?.firstName}} {{(profile| async)?.surname}}</mat-card-content>
+    <mat-card-content> Bio: {{(profile| async)?.bio}}</mat-card-content>
+    </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <h1 align = "center">{{(profile| async)?.nickname}}'s Songs</h1>
+    <div *ngFor="let song of songs">
+      <p>{{song.title}}<p>
+      <audio controls [src] ="song.song"></audio>
+    </div>
+
+
+
+  </mat-tab>
+  <mat-tab label="playlist">
+    <h1>Some more tab content</h1>
+
+
   </mat-tab>
   <mat-tab label="Comments">
-
     <div  class="bs-example" id="messages">
       <div *ngFor="let message of comments | async">
         <mat-card class ="commentCard"  >

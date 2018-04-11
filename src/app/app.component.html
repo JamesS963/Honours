@@ -6,7 +6,7 @@
   <button mat-button *ngIf="auth" routerLink="/">Home</button>
   <button mat-button *ngIf="auth" routerLink="/editProfile">Edit Profile</button>
   <button mat-button *ngIf="auth" routerLink="/createSong">Create Song</button>
-  <button mat-button *ngIf="auth" routerLink="/playlist/{{id}}">Create Song</button>
+  <button mat-button *ngIf="auth" routerLink="/playlist/{{id}}">My Playlist</button>
   <button mat-button  *ngIf="auth" (click)="logout()" >logout</button>
 
 </mat-toolbar>

@@ -1,11 +1,15 @@
-<form (submit)="login(email.value, password.value)">
-  <div>
-    <label for ="email">Email</label>
-    <input required ngModel name="email" #email="ngModel" id ="email" type ="text">
+<mat-card align="center">
+<form class = "form" (submit)="login(email.value, password.value)">
 
-    <label for ="password">Password</label>
-    <input ngModel name="password" #password = "ngModel" id ="password" type ="password">
+  <h1>Login</h1>
+    <mat-form-field>
+    <input matInput placeholder ="Email address" required ngModel name="email" #email="ngModel" id ="email" type ="text">
+    </mat-form-field>
 
-    <button >Register</button>
-  </div>
+    <mat-form-field>
+    <input matInput placeholder="Password" required ngModel name="password" #password = "ngModel" id ="password" type ="password">
+      </mat-form-field>
+    <button mat-button>Login</button>
+
 </form>
+</mat-card>

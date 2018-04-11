@@ -1,3 +1,5 @@
-<p>
-  edit-profile works!
-</p>
+<img src ="{{(profile | async)?.profilePic}}">
+<div>
+  <h2>bio</h2>
+  <p>{{(profile | async)?.bio}}</p>
+</div>

@@ -1,4 +1,28 @@
-<div *ngFor="let p of playlist">
-  <p>{{p.title}}<p>
+<mat-grid-list [cols]="12">
+  <mat-grid-tile [colspan] = "12" >
+    <h1 align="center">Playlist</h1>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan] = "6" [rowspan]="3" >
 
-</div>
+<mat-card class = "songCard" align="center">
+  <h1 align="center">Now Playing</h1>
+  <mat-card-header>
+    <img mat-card-image class = "cardImage" src="{{currentArt}}">
+  </mat-card-header>
+  <mat-card-title >
+    {{currentTitle}}
+  </mat-card-title>
+  <mat-card-content>Artist: {{currentArtist}}</mat-card-content>
+  <mat-card-content>Genre: {{currentGenre}}</mat-card-content>
+  <mat-card-actions > <audio controls [src] ="currentSong" onended="nextSong()" ></audio> </mat-card-actions>
+</mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan] = "6" [rowspan]="3" >
+<mat-card class = "listCard" >
+  <h2 align="center"> Playlist </h2>
+  <div *ngFor="let p of playlist">
+    <p class="playlistItem" (click)="setSong(p)" >{{p.title}}<p>
+  </div>
+</mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

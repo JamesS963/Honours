@@ -18,8 +18,10 @@ export class RegisterComponent implements OnInit {
 
   createAccount(email, password, event) {
     this.userService.createAccount(email, password).
-    then((e) => {this.router.navigate(['/accountSetup']); })
-      .catch((error) => {
+    then((e) => {
+
+      this.router.navigate(['/accountSetup']);
+    }).catch((error) => {
       this.error = error;
     });
   }

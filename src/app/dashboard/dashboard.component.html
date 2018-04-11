@@ -1,5 +1,6 @@
 <h1>welcome {{(me | async)?.firstName}}</h1>
-
+<mat-tab-group>
+  <mat-tab label="Songs">
 <mat-grid-list [cols]="12" rowHeight = "200px">
 
 <div class = "cardList" *ngFor="let song of (songs | async)">
@@ -17,4 +18,27 @@
   </mat-card>
   </mat-grid-tile>
 </div>
+
 </mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Users">
+    <mat-grid-list [cols]="12" rowHeight = "200px">
+
+      <div class = "cardList" *ngFor="let song of (users| async)">
+        <mat-grid-tile [colspan] = "4" [rowspan]="3" >
+          <mat-card>
+            <mat-card-header>
+              <img mat-card-image class = "cardImage" src="{{song?.profilePic}}">
+            </mat-card-header>
+            <mat-card-title routerLink="profile/{{song.id}}">
+              {{song.nickname}}
+            </mat-card-title>
+            <mat-card-content>Biography: {{song?.bio}}</mat-card-content>
+            <mat-card-content>Genre: {{song?.genre}}</mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </div>
+
+    </mat-grid-list>
+  </mat-tab>
+</mat-tab-group>

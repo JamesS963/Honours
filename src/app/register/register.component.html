@@ -1,14 +1,15 @@
-
+<mat-card align="center">
 <form (submit)="createAccount(email.value, password.value)">
-<div>
-  <label for ="email">Email</label>
-  <input required ngModel name="email" #email="ngModel" id ="email" type ="text">
+  <h1>Register</h1>
+  <mat-form-field>
+  <input matInput placeholder ="Email address"  required ngModel name="email" #email="ngModel" id ="email" type ="text">
   <div *ngIf="email.touched && !email.valid">Email is invalid</div>
+  </mat-form-field>
 
-  <label for ="password">Password</label>
-  <input ngModel name="password" #password = "ngModel" id ="password" type ="password">
+  <mat-form-field>
+  <input matInput placeholder ="Password" required ngModel name="password" #password = "ngModel" id ="password" type ="password">
+  </mat-form-field>
 
-
-  <button (click)="createAccount(email.value, password.value)">Register</button>
-</div>
+  <button mat-button (click)="createAccount(email.value, password.value)">Register</button>
 </form>
+</mat-card>

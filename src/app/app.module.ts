@@ -12,7 +12,8 @@ import {FormsModule} from '@angular/forms';
 import { AccountSetupComponent } from './account-setup/account-setup.component';
 import {UserService} from './user.service';
 import {
-  MatButtonModule, MatButtonToggle, MatButtonToggleModule, MatCardModule, MatGridListModule, MatMenuModule, MatToolbar,
+  MatButtonModule, MatButtonToggle, MatButtonToggleModule, MatCardModule, MatFormFieldModule, MatGridListModule, MatInputModule,
+  MatMenuModule, MatTab, MatTabsModule, MatToolbar,
   MatToolbarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -31,6 +32,7 @@ import { BrowseSongsComponent } from './browse-songs/browse-songs.component';
 import {SongService} from './song.service';
 import { MyPlaylistComponent } from './my-playlist/my-playlist.component';
 import {UploadServiceService} from './upload.service';
+import { ProfileComponent } from './profile/profile.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCEc0gZV7cOe0Od1S9Wa7RZ2M53xrzXj6g',
@@ -47,7 +49,10 @@ export let MD_MODULES: any = [
   MatCardModule,
   MatGridListModule,
   MatMenuModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatTabsModule
 ];
 
 @NgModule({
@@ -64,7 +69,8 @@ export let MD_MODULES: any = [
     FileSizePipe,
     SongComponent,
     BrowseSongsComponent,
-    MyPlaylistComponent
+    MyPlaylistComponent,
+    ProfileComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
