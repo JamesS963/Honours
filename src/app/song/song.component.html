@@ -8,8 +8,14 @@
   <p> Uploaded by <a [routerLink]="['/profile', ownerID]">{{(owner | async)?.nickname}}</a> </p>
   <audio controls [src]="(song | async)?.song"></audio>
   <br>
+  <ng-container *ngIf="isLoggedIn">
+  <ng-container *ngIf="!isjoined">
 <button mat-button (click)="addToPlaylist()">Add To Playlist</button>
+  </ng-container>
+  <ng-container *ngIf="isjoined">
 <button mat-button (click) ="removeFromPlaylist()">Remove From Playlist</button>
+  </ng-container>
+  </ng-container>
 </div>
   </mat-tab>
   <mat-tab label="Comments">
@@ -38,11 +44,11 @@
       </div>
     </div>
 
-    <form>
+    <form #myForm="ngForm" (submit)="myForm.reset();">
       <label for ="comment">Comment</label>
       <input required ngModel name="comment" #comment="ngModel" id ="comment" type ="text">
 
-      <button mat-button class="send-message" (click)="postComment(comment.value)">SEND</button>
+      <button mat-button type = "submit" class="send-message" (click)="postComment(comment.value)">SEND</button>
     </form>
 
   </mat-tab>

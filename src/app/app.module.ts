@@ -33,6 +33,8 @@ import {SongService} from './song.service';
 import { MyPlaylistComponent } from './my-playlist/my-playlist.component';
 import {UploadServiceService} from './upload.service';
 import { ProfileComponent } from './profile/profile.component';
+import {MessageService} from './message.service';
+import {SongFilterPipe} from './song-filter.pipe';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCEc0gZV7cOe0Od1S9Wa7RZ2M53xrzXj6g',
@@ -67,6 +69,7 @@ export let MD_MODULES: any = [
     DropZoneDirective,
     FileuploadComponent,
     FileSizePipe,
+    SongFilterPipe,
     SongComponent,
     BrowseSongsComponent,
     MyPlaylistComponent,
@@ -88,7 +91,8 @@ export let MD_MODULES: any = [
     UserService,
     AccountAuthService,
     SongService,
-    UploadServiceService
+    UploadServiceService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

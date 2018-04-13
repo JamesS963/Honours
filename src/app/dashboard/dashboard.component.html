@@ -1,11 +1,12 @@
 <h1>welcome {{(me | async)?.firstName}}</h1>
 <mat-tab-group>
   <mat-tab label="Songs">
+    <input matInput #myInput placeholder="Search for Genres"  [(ngModel)]="name" (input)="filterItem(myInput.value)">
 <mat-grid-list [cols]="12" rowHeight = "200px">
 
-<div class = "cardList" *ngFor="let song of (songs | async)">
+<div class = "cardList" *ngFor="let song of (songs)">
   <mat-grid-tile [colspan] = "4" [rowspan]="3" >
-  <mat-card>
+  <mat-card class ="mat-card">
     <mat-card-header>
       <img mat-card-image class = "cardImage" src="{{song.art}}">
     </mat-card-header>
@@ -26,7 +27,7 @@
 
       <div class = "cardList" *ngFor="let song of (users| async)">
         <mat-grid-tile [colspan] = "4" [rowspan]="3" >
-          <mat-card>
+          <mat-card class ="mat-card">
             <mat-card-header>
               <img mat-card-image class = "cardImage" src="{{song?.profilePic}}">
             </mat-card-header>
@@ -41,4 +42,40 @@
 
     </mat-grid-list>
   </mat-tab>
+
+  <mat-tab label="Comments">
+
+    <div  class="bs-example" id="messages">
+      <div *ngFor="let message of comments | async ">
+        <mat-card class ="commentCard"  >
+
+          <mat-card-header>
+
+            <div mat-card-avatar style= " background-image: url({{message.pic}}); background-size: cover;"></div>
+            <img mat-card-image src= "{{message.pic}}" class="cardImage"/>
+
+          </mat-card-header>
+
+          <p>{{ message.comment }}</p>
+          <div class="author">
+            {{ message.displayName }}
+          </div>
+
+          <div class="author">
+            {{ message.timestamp | date:"MM/dd/yy hh:mm a" }}
+          </div>
+
+        </mat-card>
+      </div>
+    </div>
+
+    <form>
+      <label for ="comment">Comment</label>
+      <input required ngModel name="comment" #comment="ngModel" id ="comment" type ="text">
+
+      <button mat-button class="send-message" (click)="postComment(comment.value)">SEND</button>
+    </form>
+
+  </mat-tab>
+
 </mat-tab-group>

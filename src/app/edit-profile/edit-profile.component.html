@@ -1,5 +1,78 @@
-<img src ="{{(profile | async)?.profilePic}}">
-<div>
-  <h2>bio</h2>
-  <p>{{(profile | async)?.bio}}</p>
+
+
+<div class="dropzone"
+     dropZone
+     (hovered)="this.uploadService.toggleHover($event)"
+>
+
+
+
+  <h3>Profile Picture</h3>
+
+  <div class="file">
+    <label class="file-label">
+
+
+      <input class="file-input" type="file" (change)="setImage($event.target.files)">
+
+
+      <span class="file-cta">
+            <span class="file-icon">
+              <i class="fa fa-upload"></i>
+            </span>
+            <span class="file-label">
+              or choose a file…
+            </span>
+          </span>
+    </label>
+  </div>
 </div>
+
+<div *ngIf="this.uploadService.profilePercentage | async as pct">
+
+  <progress class="progress is-info"
+            [value]="pct"
+            max="100">
+  </progress>
+
+  {{ pct | number }}%
+
+</div>
+
+
+<div *ngIf="this.uploadService.profileSnapshot | async as snap">
+  {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
+
+  <div *ngIf="this.uploadService.profileDownloadURL | async as url">
+    <h3>Results!</h3>
+    <img [src]="url"><br>
+    <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+  </div>
+
+</div>
+
+
+
+
+<mat-card align="center">
+  <form >
+
+    <mat-form-field>
+      <input matInput placeholder ="First Name" [value]="(profile|async)?.firstName" required ngModel name="firstName" #firstName="ngModel" id ="firstName" type ="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder ="Surname" required ngModel name="surnamel" #surname="ngModel" id ="surname" type ="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder ="Nickname" required ngModel name="nickname" #nickname="ngModel" id ="nickname" type ="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder ="Age" required ngModel name="age" #age="ngModel" id ="age" type ="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder ="Biography" required ngModel name="bio" #bio="ngModel" id ="bio" type ="text">
+    </mat-form-field>
+
+    <button mat-button (click)="createProfile(firstName.value, surname.value, nickname.value, age.value, bio.value)">Create Account</button>
+  </form>
+</mat-card>

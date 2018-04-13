@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {AccountAuthService} from '../account-auth.service';
 import {AngularFireObject} from 'angularfire2/database';
+import {UploadServiceService} from '../upload.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,7 +13,9 @@ import {AngularFireObject} from 'angularfire2/database';
 })
 export class EditProfileComponent implements OnInit {
   profile: Observable<any>;
-  constructor(public userService: UserService, public route: ActivatedRoute, public accountAuth: AccountAuthService) {
+  image;
+  constructor(public userService: UserService, public route: ActivatedRoute,
+              public accountAuth: AccountAuthService, public uploadService: UploadServiceService) {
     this.profile = this.userService.getUser(this.accountAuth.getUserID());
   }
 
@@ -20,4 +23,11 @@ export class EditProfileComponent implements OnInit {
   ngOnInit() {
   }
 
+  setImage(i) {
+    this.image = i;
+  }
+  createProfile(firstName, surname, nickname, age, bio) {
+    this.uploadService.startProfileUpload(this.image);
+    this.userService.createProfile(firstName, surname, nickname, age, bio);
+  }
 }

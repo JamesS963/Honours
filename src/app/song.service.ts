@@ -57,7 +57,7 @@ export class SongService {
     return this.db.list('songs/' + id + '/comments').valueChanges();
   }
   postComment(id, message) {
-    this.accountAuthService.getMe().subscribe((e) => {
+    return this.accountAuthService.getMe().subscribe((e) => {
       this.db.list('songs/' + id + '/comments' ).push({
         id: this.accountAuthService.getUserID(),
         comment: message,

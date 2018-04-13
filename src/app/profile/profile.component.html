@@ -25,10 +25,10 @@
   </mat-tab>
   <mat-tab label="playlist">
     <h1>Some more tab content</h1>
-
-
   </mat-tab>
+
   <mat-tab label="Comments">
+
     <div  class="bs-example" id="messages">
       <div *ngFor="let message of comments | async">
         <mat-card class ="commentCard"  >
@@ -53,7 +53,7 @@
       </div>
     </div>
 
-    <form>
+    <form >
       <label for ="comment">Comment</label>
       <input required ngModel name="comment" #comment="ngModel" id ="comment" type ="text">
 
@@ -61,4 +61,5 @@
     </form>
 
   </mat-tab>
+
 </mat-tab-group>
