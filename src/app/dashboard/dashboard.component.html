@@ -69,13 +69,14 @@
       </div>
     </div>
 
+    <div *ngIf="authstate">
     <form>
       <label for ="comment">Comment</label>
       <input required ngModel name="comment" #comment="ngModel" id ="comment" type ="text">
 
       <button mat-button class="send-message" (click)="postComment(comment.value)">SEND</button>
     </form>
-
+    </div>
   </mat-tab>
 
 </mat-tab-group>

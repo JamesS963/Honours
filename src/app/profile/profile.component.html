@@ -15,51 +15,11 @@
       </mat-grid-tile>
     </mat-grid-list>
     <h1 align = "center">{{(profile| async)?.nickname}}'s Songs</h1>
-    <div *ngFor="let song of songs">
+    <div align = "center" *ngFor="let song of songs">
       <p>{{song.title}}<p>
       <audio controls [src] ="song.song"></audio>
     </div>
-
-
-
-  </mat-tab>
-  <mat-tab label="playlist">
-    <h1>Some more tab content</h1>
   </mat-tab>
 
-  <mat-tab label="Comments">
-
-    <div  class="bs-example" id="messages">
-      <div *ngFor="let message of comments | async">
-        <mat-card class ="commentCard"  >
-
-          <mat-card-header>
-
-            <div mat-card-avatar style= " background-image: url({{message.pic}}); background-size: cover;"></div>
-            <img src= "{{message.pic}}" class="avatar"/>
-
-          </mat-card-header>
-
-          <p>{{ message.comment }}</p>
-          <div class="author">
-            {{ message.displayName }}
-          </div>
-
-          <div class="author">
-            {{ message.timestamp | date:"MM/dd/yy hh:mm a" }}
-          </div>
-
-        </mat-card>
-      </div>
-    </div>
-
-    <form >
-      <label for ="comment">Comment</label>
-      <input required ngModel name="comment" #comment="ngModel" id ="comment" type ="text">
-
-      <button mat-button class="send-message" (click)="postComment(comment.value)">SEND</button>
-    </form>
-
-  </mat-tab>
 
 </mat-tab-group>

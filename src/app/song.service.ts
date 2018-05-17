@@ -24,6 +24,9 @@ export class SongService {
     this.song = this.db.list('songs/').valueChanges();
     return this.song;
   }
+  getUserSongs(id) {
+    return this.db.list('users/' + id + '/ownedSongs').valueChanges();
+  }
   addToPlaylist(songID) {
     this.db.object('users/' + this.accountAuthService.getUserID() + '/playlist/' + songID).update({
       id: songID

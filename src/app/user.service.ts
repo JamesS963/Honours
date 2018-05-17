@@ -9,11 +9,7 @@ export class UserService {
 
   constructor(public afAuth: AngularFireAuth, public db: AngularFireDatabase, public auth: AccountAuthService) { }
 
-  createAccount(email, password) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((e) => {
-      this.db.object('users/' + e.uid).update({id: e.uid});
-    });
-  }
+
   getUser(id) { return this.db.object('users/' + id).valueChanges(); }
 
   getUsers() { return this.db.list('users/').valueChanges(); }

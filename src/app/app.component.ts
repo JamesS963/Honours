@@ -15,7 +15,7 @@ export class AppComponent {
     afAuth.authState.subscribe((auth) => {
       if (auth != null) {
         this.auth = true;
-        this.id = auth.uid
+        this.id = auth.uid;
       } else {this.auth = false; }
     });
 

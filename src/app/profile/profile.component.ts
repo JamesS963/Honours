@@ -10,14 +10,21 @@ import {SongService} from '../song.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  // initilize variables
   profile: Observable<any>;
   songs= [];
-  comments: Observable<any>;
+
+  userSongs: Observable<any>;
   constructor(public userService: UserService, public songService: SongService, public route: ActivatedRoute) {
+    // gett's an observable of the users profile
     this.profile = userService.getUser(this.route.snapshot.params['id']);
-    this.comments = userService.getComments(this.route.snapshot.params['id']);
-    songService.getSongs().subscribe((song) => {
+
+    // get's  a list of all songs
+    this.userSongs = songService.getUserSongs(this.route.snapshot.params['id']);
+    this.userSongs.subscribe((song) => {
+      // goes through a list of all song
       for (const s of song){
+        // checks if the song is the same as th users
         this.songService.getSong(s.id).subscribe((y) => {
           this.songs.push(y);
         });
@@ -25,9 +32,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  postComment(comment) {
-    this.userService.postComment(this.route.snapshot.params['id'], comment);
-  }
+
   ngOnInit() {
   }
 

@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  // attempts to login the user.
   login(email, password) {
     this.userService.login(email, password).then((success) => {
       this.router.navigate(['/']);

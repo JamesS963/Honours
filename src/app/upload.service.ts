@@ -85,7 +85,7 @@ export class UploadServiceService {
     }
 
     // The storage path
-    const path = `test/${new Date().getTime()}_${file.name}`;
+    const path = `songs/${new Date().getTime()}_${file.name}`;
 
     // Totally optional metadata
     const customMetadata = { app: 'My AngularFire-powered PWA!' };
@@ -111,7 +111,7 @@ export class UploadServiceService {
     }
 
     // The storage path
-    const path = `test/${new Date().getTime()}_${file.name}`;
+    const path = `songs/${new Date().getTime()}_${file.name}`;
 
     // Totally optional metadata
     const customMetadata = { app: 'My AngularFire-powered PWA!' };
